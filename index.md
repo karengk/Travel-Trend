@@ -5,9 +5,9 @@
 </head>
 
 <body>
-
-  <a href="project/traveldata">Traveldata</a>
-  
+  <div class="content">
+    <a href="project/traveldata">Traveldata</a>
+  </div>  
 </body>
 
 </html>
