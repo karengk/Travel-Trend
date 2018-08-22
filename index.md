@@ -1,18 +1,84 @@
 <html>
 <head>
 <title>Title of the document</title>
+<style>
+  body {
+    background: #efefef;
+    padding: 20px;
+    font-family: Helvetica;
+  }
+
+  button {
+    background: #0084ff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 14px;
+    font-size: 15px;
+    color: #fff;
+  }
+
+</style>
+
+<script>
+  var $form = $('form#test-form'),
+    url = 'https://script.google.com/macros/s/AKfycbw_4pK_SHeymLeDSxQpbmgSIG1q7oQMSJW66fvrTvlbufFtlT0/exec'
+
+  $('#submit-form').on('click', function(e) {
+    e.preventDefault();
+    var jqxhr = $.ajax({
+      url: url,
+      method: "GET",
+      dataType: "json",
+      data: $form.serializeObject()
+    }).success(
+      // do something
+    );
+  })
+
+</script>
+
 </head>
 
 <body>
-  <div class="content">
-    <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1243_RC12/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"홍콩 여행","geo":"","time":"today 12-m"},{"keyword":"오사카 여행","geo":"","time":"today 12-m"},{"keyword":"타이페이 여행","geo":"","time":"today 12-m"},{"keyword":"다낭 여행","geo":"","time":"today 12-m"},{"keyword":"도쿄 여행","geo":"","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=%ED%99%8D%EC%BD%A9%20%EC%97%AC%ED%96%89,%EC%98%A4%EC%82%AC%EC%B9%B4%20%EC%97%AC%ED%96%89,%ED%83%80%EC%9D%B4%ED%8E%98%EC%9D%B4%20%EC%97%AC%ED%96%89,%EB%8B%A4%EB%82%AD%20%EC%97%AC%ED%96%89,%EB%8F%84%EC%BF%84%20%EC%97%AC%ED%96%89&date=today 12-m,today 12-m,today 12-m,today 12-m,today 12-m","guestPath":"https://trends.google.com:443/trends/embed/"}); </script> 
-    
-    <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1243_RC12/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("RELATED_QUERIES_0", {"comparisonItem":[{"keyword":"홍콩 여행","geo":"","time":"today 12-m"},{"keyword":"오사카 여행","geo":"","time":"today 12-m"},{"keyword":"타이페이 여행","geo":"","time":"today 12-m"},{"keyword":"다낭 여행","geo":"","time":"today 12-m"},{"keyword":"도쿄 여행","geo":"","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=%ED%99%8D%EC%BD%A9%20%EC%97%AC%ED%96%89,%EC%98%A4%EC%82%AC%EC%B9%B4%20%EC%97%AC%ED%96%89,%ED%83%80%EC%9D%B4%ED%8E%98%EC%9D%B4%20%EC%97%AC%ED%96%89,%EB%8B%A4%EB%82%AD%20%EC%97%AC%ED%96%89,%EB%8F%84%EC%BF%84%20%EC%97%AC%ED%96%89&date=today 12-m,today 12-m,today 12-m,today 12-m,today 12-m","guestPath":"https://trends.google.com:443/trends/embed/"}); </script> 
-    
-    <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1243_RC12/embed_loader.js"></script> <script type="text/javascript"> trends.embed.renderExploreWidget("RELATED_QUERIES_1", {"comparisonItem":[{"keyword":"홍콩 여행","geo":"","time":"today 12-m"},{"keyword":"오사카 여행","geo":"","time":"today 12-m"},{"keyword":"타이페이 여행","geo":"","time":"today 12-m"},{"keyword":"다낭 여행","geo":"","time":"today 12-m"},{"keyword":"도쿄 여행","geo":"","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=%ED%99%8D%EC%BD%A9%20%EC%97%AC%ED%96%89,%EC%98%A4%EC%82%AC%EC%B9%B4%20%EC%97%AC%ED%96%89,%ED%83%80%EC%9D%B4%ED%8E%98%EC%9D%B4%20%EC%97%AC%ED%96%89,%EB%8B%A4%EB%82%AD%20%EC%97%AC%ED%96%89,%EB%8F%84%EC%BF%84%20%EC%97%AC%ED%96%89&date=today 12-m,today 12-m,today 12-m,today 12-m,today 12-m","guestPath":"https://trends.google.com:443/trends/embed/"}); </script> 
-    
-    
-  </div>  
+
+<form id="selfmining">
+
+  <div>
+    <label>이름</label>
+    <input type="text" name="name" placeholder="이름을 입력해 주세요" />
+  </div>
+
+  <div>
+    <label>본부</label>
+    <select name="hq">
+      <option value="C-Level">C-Level</option>
+      <option value="CGEX">CGEX</option>
+      <option value="CEO직속">CEO직속</option>
+      <option value="기술">기술</option>
+      <option value="보안">보안</option>
+      <option value="제품">제품</option>
+      <option value="경영기획/운영">경영기획/운영</option>
+      <option value="경영지원">경영지원</option>
+      <option value="감사/리스크관리">감사/리스크관리</option>
+    </select>
+  </div>
+
+  <div>
+    <label>팀</label>
+    <input type="text" name="team" placeholder="팀 이름을 입력해 주세요." />
+  </div>
+
+  <div>
+    <label>Field 4</label>
+    <input type="text" name="task1" placeholder="Task 1" />
+  </div>
+
+  <div>
+    <button type="submit" id="submit-form">Submit</button>
+  </div>
+
+</form>
+
 </body>
 
 </html>
